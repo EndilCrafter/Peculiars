@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "peculiars:passionfruit_ice_cream_block"
+          "name": "peculiars:passion_fruit_ice_cream_block"
         }
       ],
       "conditions": [

@@ -6,21 +6,24 @@ import com.teamabnormals.blueprint.common.advancement.modification.AdvancementMo
 import com.teamabnormals.blueprint.common.advancement.modification.modifiers.CriteriaModifier;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.ConsumeItemTrigger;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
 public class PeculiarsAdvancementModifierProvider extends AdvancementModifierProvider {
 
-    public PeculiarsAdvancementModifierProvider(DataGenerator dataGenerator) {
-        super(dataGenerator, Peculiars.MODID);
+    public PeculiarsAdvancementModifierProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(Peculiars.MODID, packOutput, lookupProvider);
     }
 
     @Override
-    protected void registerEntries() {
+    protected void registerEntries(HolderLookup.Provider provider) {
         CriteriaModifier.Builder constructBalancedDiet = CriteriaModifier.builder(this.modId);
         Collection<RegistryObject<Item>> items = PeculiarsItems.HELPER.getDeferredRegister().getEntries();
 

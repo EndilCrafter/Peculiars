@@ -6,21 +6,28 @@ import com.cosmicgelatin.peculiars.core.data.server.tags.PeculiarsBlockTagsProvi
 import com.cosmicgelatin.peculiars.core.data.server.tags.PeculiarsItemTagsProvider;
 import com.cosmicgelatin.peculiars.core.other.PeculiarsCauldronInteractions;
 import com.cosmicgelatin.peculiars.core.other.PeculiarsCompat;
+import com.cosmicgelatin.peculiars.core.other.PeculiarsCreativeModTabContents;
 import com.cosmicgelatin.peculiars.core.registry.PeculiarsLootConditions;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import java.util.concurrent.CompletableFuture;
 
 @Mod(Peculiars.MODID)
 @Mod.EventBusSubscriber(modid = Peculiars.MODID)
@@ -43,6 +50,8 @@ public class Peculiars {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, PeculiarsConfig.COMMON_SPEC);
         PeculiarsLootConditions.LOOT_ITEM_CONDITION_TYPE.register(modEventBus);
 
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> PeculiarsCreativeModTabContents::buildSeasonalsCreativeTabContents);
+
         modEventBus.addListener(this::setupCommon);
         modEventBus.addListener(this::gatherData);
     }
@@ -61,13 +70,15 @@ public class Peculiars {
         boolean includeClient = event.includeClient();
         boolean includeServer = event.includeServer();
         DataGenerator generator = event.getGenerator();
+        PackOutput output = generator.getPackOutput();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(includeClient, new PeculiarsBlockStateProvider(generator, fileHelper));
+        generator.addProvider(includeClient, new PeculiarsBlockStateProvider(output, fileHelper));
 
-        PeculiarsBlockTagsProvider blockTagsProvider = new PeculiarsBlockTagsProvider(generator, fileHelper);
+        PeculiarsBlockTagsProvider blockTagsProvider = new PeculiarsBlockTagsProvider(output, lookupProvider, fileHelper);
         generator.addProvider(includeServer, blockTagsProvider);
-        generator.addProvider(includeServer, new PeculiarsItemTagsProvider(generator, blockTagsProvider, fileHelper));
-        generator.addProvider(includeServer, new PeculiarsAdvancementModifierProvider(generator));
+        generator.addProvider(includeServer, new PeculiarsItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), fileHelper));
+        generator.addProvider(includeServer, new PeculiarsAdvancementModifierProvider(output, lookupProvider));
     }
 }

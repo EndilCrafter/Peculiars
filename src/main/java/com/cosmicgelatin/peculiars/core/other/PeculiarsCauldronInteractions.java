@@ -17,7 +17,7 @@ public class PeculiarsCauldronInteractions {
         if (NeapolitanConfig.COMMON.milkshakeCauldrons.get()) {
             NeapolitanCauldronInteractions.addMilkshakeInteractions(PeculiarsItems.YUCCA_MILKSHAKE.get(), PeculiarsBlocks.YUCCA_MILKSHAKE_CAULDRON.get(), PeculiarsItems.YUCCA_ICE_CREAM.get(), YUCCA_MILKSHAKE.map());
             NeapolitanCauldronInteractions.addMilkshakeInteractions(PeculiarsItems.ALOE_MILKSHAKE.get(), PeculiarsBlocks.ALOE_MILKSHAKE_CAULDRON.get(), PeculiarsItems.ALOE_ICE_CREAM.get(), ALOE_MILKSHAKE.map());
-            NeapolitanCauldronInteractions.addMilkshakeInteractions(PeculiarsItems.PASSIONFRUIT_MILKSHAKE.get(), PeculiarsBlocks.PASSIONFRUIT_MILKSHAKE_CAULDRON.get(), PeculiarsItems.PASSIONFRUIT_ICE_CREAM.get(), PASSIONFRUIT_MILKSHAKE.map());
+            NeapolitanCauldronInteractions.addMilkshakeInteractions(PeculiarsItems.PASSIONFRUIT_MILKSHAKE.get(), PeculiarsBlocks.PASSION_FRUIT_MILKSHAKE_CAULDRON.get(), PeculiarsItems.PASSIONFRUIT_ICE_CREAM.get(), PASSIONFRUIT_MILKSHAKE.map());
         }
     }
 }

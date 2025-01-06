@@ -7,14 +7,14 @@
   ],
   "key": {
     "X": {
-      "item": "peculiars:passionfruit_ice_cream"
+      "item": "peculiars:passion_fruit_ice_cream"
     },
     "#": {
       "item": "minecraft:snow_block"
     }
   },
   "result": {
-    "item": "peculiars:passionfruit_ice_cream_block",
+    "item": "peculiars:passion_fruit_ice_cream_block",
     "count": 8
   },
   "conditions": [

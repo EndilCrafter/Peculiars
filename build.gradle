@@ -26,7 +26,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
 
-    mappings channel: 'parchment', version: '2022.11.27-1.19.2'
+    mappings channel: "${mappingsChannel}", version: "${parchment_version}-${mc_version}"
 
     runs {
         client {
@@ -96,10 +96,14 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        url "https://www.cursemaven.com"
+        url = "https://maven.jaackson.me"
     }
     maven {
-        url = "https://maven.jaackson.me"
+        name 'cursemaven'
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
     }
 }
 
@@ -109,6 +113,7 @@ dependencies {
     implementation fg.deobf("com.teamabnormals:blueprint:${mc_version}-${blueprint}")
     implementation fg.deobf("curse.maven:neapolitan-382016:${neapolitan_id}")
     implementation fg.deobf("curse.maven:atmospheric-362393:${atmospheric_id}")
+    runtimeOnly fg.deobf("curse.maven:jei-238222:5846810")
 }
 
 jar {

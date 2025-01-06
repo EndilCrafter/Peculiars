@@ -4,6 +4,8 @@ import com.cosmicgelatin.peculiars.core.Peculiars;
 import com.cosmicgelatin.peculiars.core.registry.PeculiarsBlocks;
 import com.teamabnormals.neapolitan.common.block.FlavoredCandleCakeBlock;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,15 +22,15 @@ import static com.cosmicgelatin.peculiars.core.data.PeculiarsDatagenUtil.*;
 
 public class PeculiarsBlockStateProvider extends BlockStateProvider {
 
-    public PeculiarsBlockStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
-        super(gen, Peculiars.MODID, exFileHelper);
+    public PeculiarsBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
+        super(output, Peculiars.MODID, exFileHelper);
     }
 
     @Override
     protected void registerStatesAndModels() {
         milkshakeCauldron(PeculiarsBlocks.YUCCA_MILKSHAKE_CAULDRON);
         milkshakeCauldron(PeculiarsBlocks.ALOE_MILKSHAKE_CAULDRON);
-        milkshakeCauldron(PeculiarsBlocks.PASSIONFRUIT_MILKSHAKE_CAULDRON);
+        milkshakeCauldron(PeculiarsBlocks.PASSION_FRUIT_MILKSHAKE_CAULDRON);
 
     }
 

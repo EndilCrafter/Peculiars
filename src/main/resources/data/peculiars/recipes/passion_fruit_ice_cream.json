@@ -5,7 +5,7 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "atmospheric:passionfruit"
+      "item": "atmospheric:passion_fruit"
     },
     {
       "tag": "forge:milk"
@@ -18,7 +18,7 @@
     }
   ],
   "result": {
-    "item": "peculiars:passionfruit_ice_cream",
+    "item": "peculiars:passion_fruit_ice_cream",
     "count": 1
   },
   "conditions": [

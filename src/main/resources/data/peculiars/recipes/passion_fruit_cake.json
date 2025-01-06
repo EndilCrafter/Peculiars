@@ -16,14 +16,14 @@
       "item": "minecraft:wheat"
     },
     "D": {
-      "item": "atmospheric:passionfruit"
+      "item": "atmospheric:passion_fruit"
     },
     "E": {
       "tag": "forge:eggs"
     }
   },
   "result": {
-    "item": "peculiars:passionfruit_cake"
+    "item": "peculiars:passion_fruit_cake"
   },
   "conditions": [
     {

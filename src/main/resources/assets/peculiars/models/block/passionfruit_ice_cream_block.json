@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "peculiars:block/passionfruit/passionfruit_ice_cream_block"
-  }
-}

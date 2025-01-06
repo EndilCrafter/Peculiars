@@ -11,14 +11,14 @@
       "item": "minecraft:glass_bottle"
     },
     {
-      "item": "peculiars:passionfruit_ice_cream"
+      "item": "peculiars:passion_fruit_ice_cream"
     },
     {
       "tag": "forge:milk"
     }
   ],
   "result": {
-    "item": "peculiars:passionfruit_milkshake",
+    "item": "peculiars:passion_fruit_milkshake",
     "count": 3
   },
   "conditions": [
